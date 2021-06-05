@@ -6,6 +6,7 @@ const app = express();
 
 app.use(express.json());
 app.use(logRequest);
+app.use('/projects/:id', projectIdExists);
 
 function logRequest(request, response, next) {
   const { method, url } = request;
@@ -15,6 +16,14 @@ function logRequest(request, response, next) {
   console.time(logRequenst);
   next();
   console.timeEnd(logRequenst);
+}
+
+function projectIdExists(request, response, next) {
+  const { id } = request.params;
+  const projectIndex = projectList.find(project => project.id === id);
+  if (!projectIndex)
+    return response.status(400).json({ error: "Project not found."})
+  return next();
 }
 
 const projectList = [];
