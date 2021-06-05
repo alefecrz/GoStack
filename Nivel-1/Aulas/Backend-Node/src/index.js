@@ -23,7 +23,7 @@ function projectIdExists(request, response, next) {
   const { id } = request.params;
   const projectIndex = projectList.find(project => project.id === id);
   if (!projectIndex)
-    return response.status(400).json({ error: "Project not found."})
+    return response.status(400).json({ error: 'Project not found.'})
   return next();
 }
 
@@ -69,4 +69,4 @@ app.delete('/projects/:id', (request, response) => {
   return response.status(204).send();
 });
 
-app.listen(PORT, () => console.log("Running in port: ", PORT) );
+app.listen(PORT, () => console.log('Running in port: ', PORT) );
