@@ -55,7 +55,7 @@ app.put('/projects/:id', (request, response) => {
 
   projectList[projectIndex] = project;
 
-  return response.status(201).json(projectList);
+  return response.status(200).json(projectList);
 });
 
 app.listen(PORT, () => console.log("Running in port: ", PORT) );
