@@ -12,7 +12,7 @@ Middleware and HTTP Request.
 </p>
 
 
-Este projeto foi desenvolvido no [RocketSeat GoStack Bootcamp](https://rocketseat.com.br/bootcamp)
+This project was developed in [RocketSeat GoStack Bootcamp](https://rocketseat.com.br/bootcamp)
 
 
 ## :running: Running Project
@@ -27,7 +27,7 @@ $ yarn dev
 - [Express][express]
 - [Nodemon][nodemon]
 
-Made with ♥ bt Álefe Cruz :wave: [Entre em contato!](https://www.alefecruz.com.br/)
+Made with ♥ bt Álefe Cruz :wave: [contact!](https://www.alefecruz.com.br/)
 
 [nodejs]:https://nodejs.org/
 [express]:https://nodejs.org/
