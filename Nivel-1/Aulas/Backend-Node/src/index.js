@@ -1,5 +1,6 @@
 const express = require('express');
 const { uuid } = require('uuidv4');
+const { response } = require('express');
 
 const PORT = 3333;
 const app = express();
@@ -56,6 +57,16 @@ app.put('/projects/:id', (request, response) => {
   projectList[projectIndex] = project;
 
   return response.status(200).json(projectList);
+});
+
+app.delete('/projects/:id', (request, response) => {
+  const { id } = request.params;
+ 
+  const projectIndex = projectList.findIndex(project => project.id === id)
+
+  projectList.splice(projectIndex, 1);
+
+  return response.status(204).send();
 });
 
 app.listen(PORT, () => console.log("Running in port: ", PORT) );
