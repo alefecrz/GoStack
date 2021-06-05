@@ -5,11 +5,21 @@ const PORT = 3333;
 const app = express();
 
 app.use(express.json());
+app.use(logRequest);
+
+function logRequest(request, response, next) {
+  const { method, url } = request;
+  
+  const logRequenst = `[${method.toUpperCase()}] ${url}`;
+  
+  console.time(logRequenst);
+  next();
+  console.timeEnd(logRequenst);
+}
 
 const projectList = [];
 app.get('/projects', (request, response) => { 
   const { title, owner} = request.query;
-
   const results = ( title || owner ) 
     ? projectList.filter(project => project.title.includes(title) || project.owner.includes(owner)) 
     : projectList;
