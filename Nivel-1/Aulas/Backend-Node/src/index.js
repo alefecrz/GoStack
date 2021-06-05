@@ -26,4 +26,17 @@ app.post('/projects', (request, response) => {
   return response.status(201).json(project);
 });
 
+app.put('/projects/:id', (request, response) => {
+  const { id } = request.params;
+  const { title, owner } = request.body;
+
+  const projectIndex = projectList.findIndex(project => project.id === id)
+
+  const project = { id, title, owner };
+
+  projectList[projectIndex] = project;
+
+  return response.status(201).json(projectList);
+});
+
 app.listen(PORT, () => console.log("Running in port: ", PORT) );
