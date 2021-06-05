@@ -8,7 +8,13 @@ app.use(express.json());
 
 const projectList = [];
 app.get('/projects', (request, response) => { 
-  return response.status(200).json(projectList);
+  const { title, owner} = request.query;
+
+  const results = ( title || owner ) 
+    ? projectList.filter(project => project.title.includes(title) || project.owner.includes(owner)) 
+    : projectList;
+
+  return response.status(200).json(results);
 });
 
 app.post('/projects', (request, response) => {
