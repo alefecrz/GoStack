@@ -1,23 +1,34 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import Header from './components/Header';
 
 const App = () => {
-  return (<>
-    <Header title="Menu 1">
+  const [projects, setProjects] = useState([]);
+  const [project, setProject] = useState('');
+
+  const handleChange = (event) => {
+    event.preventDefault();
+    setProject(event.target.value);
+  }
+
+  const handleAddproject = () => {
+    if (!!project){
+      const date = new Date();
+      const newProject = `${project + date.getTime()}`
+      setProjects([... projects, newProject ]);
+    }
+  };
+
+  return (
+    <>
+      <Header title="ADD PROJECTS" />
+      <input type="text" value={project} onChange={event => handleChange(event)}/>
+      <button onClick={() => handleAddproject()}>adicionar projeto</button>
       <ul>
-        <li>Home</li>
-        <li>Login</li>
+        {projects.map(project => <li key={project}>{project}</li>)}
       </ul>
-    </Header>
-    <Header title="Menu 2">
-      <ul>
-        <li>Home</li>
-        <li>Login</li>
-        <li>Sair</li>
-      </ul>
-    </Header>
-  </>);
+    </>
+  );
 }
 
 export default App;
