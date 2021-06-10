@@ -1,7 +1,13 @@
 import React from 'react';
 
-function App() {
-  return <h1>Hello GoStack</h1>;
+import Header from './components/Header';
+
+const App = () => {
+  return (<>
+    <Header />
+    <Header />
+    <Header />
+  </>);
 }
 
 export default App;
