@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 
+import backgroundImage from './assets/background.jpg'
 import Header from './components/Header';
 import './App.css'
+
 
 const App = () => {
   const [projects, setProjects] = useState([]);
@@ -23,6 +25,7 @@ const App = () => {
   return (
     <>
       <Header title="ADD PROJECTS" />
+      <img src={backgroundImage} />
       <input type="text" value={project} onChange={event => handleChange(event)}/>
       <button onClick={() => handleAddproject()}>adicionar projeto</button>
       <ul>
