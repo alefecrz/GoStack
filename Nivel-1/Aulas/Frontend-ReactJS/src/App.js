@@ -12,18 +12,23 @@ const App = () => {
   const [owner, setOwner] = useState('');
 
   useEffect(() => {
-    api.get('/projects').then(response => {
-      const { data } = response;
-      setProjects(data);
-    });
+    async function getProjects() {
+      try {
+        const response = await api.get('/projects');
+        const { data } = response;
+        setProjects(data);
+      } catch (error) {
+        console.log(error)
+      }
+    }
+    getProjects();
   }, []);
 
-  const handleAddproject = () => {
+  const handleAddproject = async () => {
     if (!!title && !!owner){
-      api.post('/projects', { title, owner }).then( response => {
-        const { data } = response;
-        setProjects([...projects , data]);
-      })
+      const response = await api.post('/projects', { title, owner })
+      const { data } = response;
+      setProjects([...projects , data]);
     }
   };
 
