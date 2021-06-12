@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
-import backgroundImage from './assets/background.jpg'
+import api from './services/api';
+
 import Header from './components/Header';
 import './App.css'
 
@@ -8,6 +9,12 @@ import './App.css'
 const App = () => {
   const [projects, setProjects] = useState([]);
   const [project, setProject] = useState('');
+
+  useEffect(() => {
+    api.get('/projects').then(response => {
+      console.log(response);
+    });
+  }, []);
 
   const handleChange = (event) => {
     event.preventDefault();
