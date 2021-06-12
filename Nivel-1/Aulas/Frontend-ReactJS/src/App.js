@@ -25,7 +25,6 @@ const App = () => {
   return (
     <>
       <Header title="ADD PROJECTS" />
-      <img src={backgroundImage} />
       <input type="text" value={project} onChange={event => handleChange(event)}/>
       <button onClick={() => handleAddproject()}>adicionar projeto</button>
       <ul>
